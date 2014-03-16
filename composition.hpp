@@ -2,28 +2,23 @@
 #define GENETIC_ALGORITHM_COMPOSITION_HPP
 namespace genetic_algorithm
 {
-	template< typename CRTP, typename l1, typename l2 >
+	template< typename CRTP >
 	struct composition
 	{
 		template<class Archive>
-		void serialize( Archive & ar, const unsigned int )
-		{
-			auto dat = static_cast< CRTP * >( this )->get_data( );
-			ar & dat.first;
-			ar & dat.second;
-		}
+		void serialize( Archive &, const unsigned int ) { }
 		void mutate( double mr )
 		{
 			auto dat = static_cast< CRTP * >( this )->get_data( );
-			data.first.mutate( mr );
-			data.second.mutate( mr );
+			dat.first.mutate( mr );
+			dat.second.mutate( mr );
 		}
 
 		void mutate( )
 		{
 			auto dat = static_cast< CRTP * >( this )->get_data( );
-			data.first.mutate( );
-			data.second.mutate( );
+			dat.first.mutate( );
+			dat.second.mutate( );
 		}
 	};
 }
