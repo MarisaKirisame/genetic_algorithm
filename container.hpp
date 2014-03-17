@@ -20,6 +20,13 @@ namespace genetic_algorithm
 			auto end = static_cast< CRTP * >( this )->get_end( );
 			for ( ;begin != end; ++ begin ) { begin->mutate( ); }
 		}
+		void crossover( const container & c )
+		{
+			auto begin = static_cast< CRTP * >( this )->get_begin( );
+			auto end = static_cast< CRTP * >( this )->get_end( );
+			auto cbegin = static_cast< const CRTP & >( c ).get_begin( );
+			auto cend = static_cast< const CRTP & >( c ).get_end( );
+		}
 	};
 }
 #endif //GENETIC_ALGORITHM_PARAMETER_HPP
